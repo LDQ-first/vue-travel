@@ -7,6 +7,13 @@ import store from './store/index.js'
 
 Vue.config.productionTip = false
 
+import VueModal from 'vue-usemodal'
+Vue.use(VueModal)
+
+import { Menu,  MenuItem } from 'element-ui'
+Vue.use(Menu)
+Vue.use(MenuItem)
+
 /* eslint-disable no-new */
 new Vue({
   el: '#app',

@@ -1,0 +1,113 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  border: none;
+  outline: none;
+ font-family: "Helvetica Neue", Helvetica, Arial, "PingFang SC", "Hiragino Sans GB", 
+              "Heiti SC", "Microsoft YaHei", "WenQuanYi Micro Hei", sans-serif;
+  min-width: 320px;
+  line-height: 1.6;
+}
+
+.fullScreenBtn {
+  position: fixed;
+  left: 10px;
+  bottom: 10px;
+}
+
+ul, li {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  color: #0066FF;
+}
+
+::-webkit-scrollbar {
+        width: 0.25em;    
+    }
+
+::-webkit-scrollbar-track {
+    border-radius: 0.125em;
+    background: #ceb9d1;
+}
+
+::-webkit-scrollbar-thumb {
+    height: 0.125em;
+    border-radius: 0.05em;
+    background: #498bd6 linear-gradient(180deg, #fff,rgba(3,169,244,.5), #0277bd);
+}
+
+.clearfix::after {
+    content: '';
+    display: block;
+    clear: both;
+}
+
+.icon {
+    width: 1.6em; height: 1.6em;
+    vertical-align: middle;
+    
+    overflow: hidden;
+    padding: 2px;
+    margin-right: 3px;
+    cursor: pointer;
+    &:hover {
+        animation: shakeIcon 1s ease-in;
+    }
+    /*&.github {
+        fill: #191717;
+        border-color: #191717;
+    }*/
+    /*&.markdown {
+        fill: #50C28B;
+        border-color: #50C28B;
+    }*/
+}
+
+input {
+    border: none;
+    outline: none;
+}
+
+.textOverflow {
+    text-align: left;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+@keyframes shakeIcon {
+    0% {
+        transform: scale3d(1, 1, 1);
+    }
+
+    30% {
+        transform: scale3d(1.25, 0.75, 1);
+    }
+
+    40% {
+        transform: scale3d(0.75, 1.25, 1);
+    }
+
+    50% {
+        transform: scale3d(1.15, 0.85, 1);
+    }
+
+    65% {
+        transform: scale3d(.95, 1.05, 1);
+    }
+
+    75% {
+        transform: scale3d(1.05, .95, 1);
+    }
+
+    100% {
+        transform: scale3d(1, 1, 1);
+    }
+}

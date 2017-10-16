@@ -13,15 +13,16 @@
     "dll": "webpack --config ./build/webpack.dll.config.js --progress",
     "sass": "cnpm install --save sass-loader node-sass",
     "vuex": "cnpm install --save vuex",
-    "element": "cnpm install --save element",
+    "element": "cnpm install --save element-ui",
     "bpc": "cnpm install -D babel-plugin-component"
   },
   "dependencies": {
-    "element": "^0.1.4",
+    "element-ui": "^1.4.7",
     "node-sass": "^4.5.3",
     "sass-loader": "^6.0.6",
     "vue": "^2.5.2",
     "vue-router": "^3.0.1",
+    "vue-usemodal": "^1.0.6",
     "vuex": "^3.0.0"
   },
   "devDependencies": {
