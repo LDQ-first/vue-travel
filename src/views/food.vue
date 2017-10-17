@@ -63,6 +63,7 @@
                         .desc {
                             font-size: 14px;
                             margin-left: 0.5em;
+                            flex: 1;
                         }
                     }
 
