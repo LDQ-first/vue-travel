@@ -5,6 +5,7 @@
             <el-menu-item index="1" v-show='!user' @click="showSignUP">注册</el-menu-item>
             <el-menu-item index="2" v-if="user">{{user}}</el-menu-item>
             <el-menu-item index="3" v-else @click="showSignIN">登录</el-menu-item>
+            <el-menu-item index="4" v-show="user" @click="logout">登出</el-menu-item>
         </el-menu>
      <modal :mdShow="isShowSignUP" @close="closeModal('signup')">
         <h3 slot="title">注册</h3>
@@ -57,7 +58,7 @@
         data() {
             return {
                  activeIndex: '1',
-                 user: '',
+                 user: localStorage.getItem('username') || '',
                  isShowSignUP: false,
                  isShowSignIN: false,
                  formData: {
@@ -81,6 +82,10 @@
 
         },
         methods: {
+            logout() {
+                this.user = ''
+                localStorage.setItem('username', '')
+            },
             showSignUP() {
                 this.formData = {
                     username: '',
@@ -109,11 +114,12 @@
                 AV.User.logIn(this.formData.username, this.formData.password)
                 .then((loginedUser) => { 
                     this.user = this.getCurrentUser().username
+                    localStorage.setItem('username', this.user)
                 }, function (error) {
                     console.log('登录失败') 
                 });
             },
-            getCurrentUser: function () { // 👈
+            getCurrentUser: function () { // 
                 let {id, createdAt, attributes: {username}} = AV.User.current()
                 return {id, username, createdAt} 
             },
@@ -131,7 +137,7 @@
 </script>
 
 
-<style scoped lang="scss">
+<style lang="scss">
     .travel {
         .travel-title {
 
@@ -153,15 +159,21 @@
             display: flex;
             .list-item {
                 display: inline-block;
-                width: 60px;
+                min-width: 50px;
                 text-align: right;
                 margin-right: 1em;
             }
             .list-input {
                 flex: 1;
-                padding: 0.5em 2em;
+                padding: 0.5em 1em;
                 background: #A7E5E9;
+                @media (max-width: 415px) {
+                    padding: 0.5em;
+                }
             }
         }
+    }
+    .md-content {
+        min-width: 320px;
     }
 </style>
