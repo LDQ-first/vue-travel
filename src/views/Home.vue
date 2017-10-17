@@ -7,7 +7,7 @@
             <el-menu-item index="3" v-else @click="showSignIN">登录</el-menu-item>
             <el-menu-item index="4" v-show="user" @click="logout">登出</el-menu-item>
         </el-menu>
-        <search></search>
+        <search ></search>
         <ul class="searchLists">
             <li class="searchList" v-for="(item, index) in searchLists" key="index" @click="detail(item.sid)">
                 <img src="../assets/img/searchList.jpg" alt="" class="pic-url">
@@ -104,6 +104,9 @@
                          console.log(data.scene_info)
                          this.$router.push({path: '/detail'})
                          localStorage.detail = JSON.stringify(data.scene_info)
+                     })
+                     .then(() => {
+                          this.$store.commit('setSearch', [])
                      })
             },
             logout() {

@@ -5,8 +5,8 @@
             <span @click="clear" class="clear">×</span>
             <button @click="search">搜索</button>
         </div>
-        <ul class="baselists">
-            <li v-for="(item, index) in base" key="index" class="baselist">
+        <ul class="baselists" v-show="!searchValue">
+            <li v-for="(item, index) in base" key="index" class="baselist" @click="setValue(item.name);search();">
                 <img :src="item.img" alt="" class="img">
                 <div class="desc">
                      <h4 class="title">{{item.name}}</h4>
@@ -69,6 +69,9 @@
             }
         },
         methods: {
+            setValue(value) {
+                this.searchValue = value
+            },
             search() {
                 axios.get(_search(this.searchValue))
                      .then((res) => res.data.data)
@@ -81,6 +84,7 @@
             },
             clear() {
                 this.searchValue = ''
+                 this.$store.commit('setSearch', [])
             }
         }
     }
