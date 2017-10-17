@@ -14,7 +14,7 @@
     "sass": "cnpm install --save sass-loader node-sass",
     "vuex": "cnpm install --save vuex",
     "element": "cnpm install --save element-ui",
-    "bpc": "cnpm install -D babel-plugin-component"
+    "bpc": "cnpm install -D babel-plugin-component" 
   },
   "dependencies": {
     "axios": "^0.16.2",
