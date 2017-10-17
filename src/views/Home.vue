@@ -10,9 +10,13 @@
         <h3 slot="title">注册</h3>
         <div slot="message">
             <ul class="lists">
-                <li class="list" v-for="(item, index) in signUPArr" key="index">
-                    <span class="list-item">{{item.name}}</span>
-                    <input class="list-input" type="text" v-model="item.value">
+                <li class="list">
+                    <span class="list-item" >用户名</span>
+                    <input class="list-input" type="text" v-model="formData.username">
+                </li>
+                <li class="list">
+                    <span class="list-item" >密码</span>
+                    <input class="list-input" type="password" v-model="formData.password">
                 </li>
             </ul>
         </div>
@@ -25,9 +29,13 @@
         <h3 slot="title">登录</h3>
         <div slot="message">
             <ul class="lists">
-                <li class="list" v-for="(item, index) in signINArr" key="index">
-                    <span class="list-item">{{item.name}}</span>
-                    <input class="list-input" type="text" v-model="item.value">
+                <li class="list">
+                    <span class="list-item" >用户名</span>
+                    <input class="list-input" type="text" v-model="formData.username">
+                </li>
+                <li class="list">
+                    <span class="list-item" >密码</span>
+                    <input class="list-input" type="password" v-model="formData.password">
                 </li>
             </ul>
         </div>
@@ -48,14 +56,18 @@
                  user: '',
                  isShowSignUP: false,
                  isShowSignIN: false,
-                 signUPArr: [
+                 formData: {
+                    username: '',
+                    password: ''
+                }
+                 /*signUPArr: [
                     {name: '用户名', value: ''},
                     {name: '密码', value: ''},
                  ],
                  signINArr: [
                     {name: '用户名', value: ''},
                     {name: '密码', value: ''},
-                 ],
+                 ],*/
             }
         },
         created() {
@@ -66,12 +78,20 @@
         },
         methods: {
             showSignUP() {
+                this.formData = {
+                    username: '',
+                    password: ''
+                }
                 this.isShowSignUP = true
             },
             signUP() {
 
             },
             showSignIN() {
+                this.formData = {
+                    username: '',
+                    password: ''
+                }
                 this.isShowSignIN = true
             },
             singIN() {
@@ -110,6 +130,7 @@
         margin: 1em;
         .list {
             margin: 1em 0;
+            display: flex;
             .list-item {
                 display: inline-block;
                 width: 60px;
@@ -117,6 +138,7 @@
                 margin-right: 1em;
             }
             .list-input {
+                flex: 1;
                 padding: 0.5em 2em;
                 background: #A7E5E9;
             }
