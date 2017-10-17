@@ -20,9 +20,12 @@
         name: '',
         data() {
             return {
-                detail: JSON.parse(localStorage.detail)
-                sid: detail.sid
+                detail: JSON.parse(localStorage.detail),
+                sid: ''
             }
+        },
+        created() {
+            this.sid = this.detail.sid
         },
         computed: {
             ...mapState({
