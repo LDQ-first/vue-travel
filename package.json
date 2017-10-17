@@ -17,6 +17,7 @@
     "bpc": "cnpm install -D babel-plugin-component"
   },
   "dependencies": {
+    "axios": "^0.16.2",
     "element-ui": "^1.4.7",
     "leancloud-storage": "^3.2.1",
     "node-sass": "^4.5.3",

@@ -7,6 +7,9 @@
             <el-menu-item index="3" v-else @click="showSignIN">登录</el-menu-item>
             <el-menu-item index="4" v-show="user" @click="logout">登出</el-menu-item>
         </el-menu>
+        <search>
+            
+        </search>
      <modal :mdShow="isShowSignUP" @close="closeModal('signup')">
         <h3 slot="title">注册</h3>
         <div slot="message">
@@ -51,7 +54,7 @@
 <script>
     /*import getAVUser from '../lib/getAVUser'*/
     import AV from '../lib/leancloud'
-
+    import Search from '../components/Search.vue'
 
     export default {
         name: 'Home',
@@ -80,6 +83,9 @@
         },
         computed: {
 
+        },
+        components: {
+            Search
         },
         methods: {
             logout() {
