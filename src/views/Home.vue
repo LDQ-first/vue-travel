@@ -79,15 +79,9 @@
                     username: '',
                     password: ''
                 },
-                proxy: proxy
-                 /*signUPArr: [
-                    {name: '用户名', value: ''},
-                    {name: '密码', value: ''},
-                 ],
-                 signINArr: [
-                    {name: '用户名', value: ''},
-                    {name: '密码', value: ''},
-                 ],*/
+                proxy: proxy,
+                
+                 
             }
         },
         created() {

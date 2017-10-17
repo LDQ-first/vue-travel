@@ -55,10 +55,10 @@
                     .img {
                         width: 150px;
                         height: 100px;
-                        margin-right: 0.5em;
                     }
                     .desc {
                         font-size: 14px;
+                        margin-left: 0.5em;
                     }
                 }
             }
