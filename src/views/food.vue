@@ -60,8 +60,8 @@
                             height: 100px;
                             margin-right: 0.5em;
                         } 
-                        .title {
-
+                        .desc {
+                            font-size: 14px;
                         }
                     }
 

@@ -72,7 +72,7 @@
                         axios.get(food(sid))
                              .then(res => res.data.data)
                              .then(data => {
-                                 console.log(data)
+                                 /*console.log(data)*/
                                  localStorage.food = JSON.stringify(data.food)
                              })
                     break;
@@ -80,7 +80,7 @@
                         axios.get(shop(sid))
                              .then(res => res.data.data)
                              .then(data => {
-                                 console.log(data)
+                              /*   console.log(data)*/
                                  localStorage.shop = JSON.stringify(data.goods)
                              })
                     break;
@@ -88,7 +88,7 @@
                         axios.get(hotel(sid))
                              .then(res => res.data.data)
                              .then(data => {
-                                 console.log(data)
+                                 /*console.log(data)*/
                                  localStorage.hotel = JSON.stringify(data.list)
                              })
                     break;
@@ -96,7 +96,7 @@
                         axios.get(traffic(sid))
                              .then(res => res.data.data)
                              .then(data => {
-                                 console.log(data)
+                                /* console.log(data)*/
                                  localStorage.traffic = JSON.stringify(data)
                              })
                     break;
