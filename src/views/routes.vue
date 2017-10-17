@@ -53,8 +53,12 @@
                 axios.get(route(plid))
                      .then(res => res.data.data) 
                      .then(data => {
+                         if(data) {
+                             localStorage.route = JSON.stringify(data)
+                         } else {
+                            localStorage.route = JSON.stringify([])
+                        }
                          
-                         localStorage.route = JSON.stringify(data)
                      })
                      .then(() => {
                         goto()

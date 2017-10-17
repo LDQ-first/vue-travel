@@ -72,7 +72,12 @@
                              .then(res => res.data.data)
                              .then(data => {
                                  /*console.log(data)*/
-                                 localStorage.view = JSON.stringify(data.scene_list)
+                                 if(data.scene_list) {
+                                     localStorage.view = JSON.stringify(data.scene_list)
+                                 } else {
+                                     localStorage.view = JSON.stringify([])
+                                 }
+                                 
                              })
                              .then(() => {
                                  goto()
@@ -83,7 +88,12 @@
                              .then(res => res.data.data)
                              .then(data => {
                                  /*console.log(data)*/
-                                 localStorage.food = JSON.stringify(data.food)
+                                 if(data.food ) {
+                                     localStorage.food = JSON.stringify(data.food)
+                                 } else {
+                                     localStorage.food = JSON.stringify([])
+                                 }
+                                 
                              })
                              .then(() => {
                                  goto()
@@ -94,7 +104,11 @@
                              .then(res => res.data.data)
                              .then(data => {
                               /*   console.log(data)*/
-                                 localStorage.shop = JSON.stringify(data.goods)
+                                 if(data.goods) {
+                                     localStorage.shop = JSON.stringify(data.goods)
+                                 } else {
+                                     localStorage.shop = JSON.stringify([])
+                                 }
                              })
                              .then(() => {
                                  goto()
@@ -105,7 +119,11 @@
                              .then(res => res.data.data)
                              .then(data => {
                                  /*console.log(data)*/
-                                 localStorage.hotel = JSON.stringify(data.list)
+                                 if(data.list) {
+                                     localStorage.hotel = JSON.stringify(data.list)
+                                 } else {
+                                     localStorage.hotel = JSON.stringify([])
+                                 }
                              })
                              .then(() => {
                                  goto()
@@ -116,7 +134,11 @@
                              .then(res => res.data.data)
                              .then(data => {
                                 /* console.log(data)*/
-                                 localStorage.traffic = JSON.stringify(data)
+                                 if(data) {
+                                     localStorage.traffic = JSON.stringify(data)
+                                 } else {
+                                     localStorage.traffic = JSON.stringify([])
+                                 }
                              })
                              .then(() => {
                                  goto()
@@ -127,7 +149,11 @@
                              .then(res => res.data.data)
                              .then(data => {
                                 /* console.log(data)*/
-                                 localStorage.routes = JSON.stringify(data.plan_list)
+                                 if(data.plan_list) {
+                                     localStorage.routes = JSON.stringify(data.plan_list)
+                                 } else {
+                                     localStorage.routes = JSON.stringify([])
+                                 }
                              })
                              .then(() => {
                                  goto()

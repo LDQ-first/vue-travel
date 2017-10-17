@@ -1,6 +1,6 @@
 <template>
     <div class="traffic">
-        <ul class="trafficlists">
+        <ul class="trafficlists" v-if="traffic">
             <li class="trafficlist" v-for="(item, index) in traffic" key="index">
                 <h3 class="title">{{item.name}}</h3>
                 <p class="desc">{{item.desc}}</p>
