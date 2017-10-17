@@ -48,6 +48,10 @@
 </template>
 
 <script>
+    /*import getAVUser from '../lib/getAVUser'*/
+    import AV from '../lib/leancloud'
+
+
     export default {
         name: 'Home',
         data() {
@@ -59,7 +63,7 @@
                  formData: {
                     username: '',
                     password: ''
-                }
+                },
                  /*signUPArr: [
                     {name: '用户名', value: ''},
                     {name: '密码', value: ''},
@@ -84,18 +88,34 @@
                 }
                 this.isShowSignUP = true
             },
-            signUP() {
-
+            signUP () {
+                let user = new AV.User();
+                user.setUsername(this.formData.username);
+                user.setPassword(this.formData.password);
+                user.signUp().then(function (loginedUser) {
+                        console.log(loginedUser);
+                    }, function (error) {
+                        console.log(error);
+                });
             },
-            showSignIN() {
+            showSignIN () {
                 this.formData = {
                     username: '',
                     password: ''
                 }
                 this.isShowSignIN = true
             },
-            singIN() {
-
+            signIN () {
+                AV.User.logIn(this.formData.username, this.formData.password)
+                .then((loginedUser) => { 
+                    this.user = this.getCurrentUser().username
+                }, function (error) {
+                    console.log('登录失败') 
+                });
+            },
+            getCurrentUser: function () { // 👈
+                let {id, createdAt, attributes: {username}} = AV.User.current()
+                return {id, username, createdAt} 
             },
             closeModal(item) {
                 switch(item) {
