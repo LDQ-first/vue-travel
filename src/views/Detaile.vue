@@ -57,8 +57,15 @@
             }
         },
         methods: {
+
             changeRouter(path, sid) {
-                console.log(path, sid)
+                const goto = () => {
+                    this.$router.push({
+                        path: path
+                    })
+                }
+
+
                 switch(path) {
                     case '/view': 
                         axios.get(view(sid))
@@ -66,6 +73,9 @@
                              .then(data => {
                                  /*console.log(data)*/
                                  localStorage.view = JSON.stringify(data.scene_list)
+                             })
+                             .then(() => {
+                                 goto()
                              })
                     break;
                     case '/food': 
@@ -75,6 +85,9 @@
                                  /*console.log(data)*/
                                  localStorage.food = JSON.stringify(data.food)
                              })
+                             .then(() => {
+                                 goto()
+                             })
                     break;
                     case '/shop': 
                         axios.get(shop(sid))
@@ -82,6 +95,9 @@
                              .then(data => {
                               /*   console.log(data)*/
                                  localStorage.shop = JSON.stringify(data.goods)
+                             })
+                             .then(() => {
+                                 goto()
                              })
                     break;
                     case '/hotel': 
@@ -91,6 +107,9 @@
                                  /*console.log(data)*/
                                  localStorage.hotel = JSON.stringify(data.list)
                              })
+                             .then(() => {
+                                 goto()
+                             })
                     break;
                     case '/traffic': 
                         axios.get(traffic(sid))
@@ -98,6 +117,9 @@
                              .then(data => {
                                 /* console.log(data)*/
                                  localStorage.traffic = JSON.stringify(data)
+                             })
+                             .then(() => {
+                                 goto()
                              })
                     break;
                     case '/routes': 
@@ -107,14 +129,15 @@
                                 /* console.log(data)*/
                                  localStorage.routes = JSON.stringify(data.plan_list)
                              })
+                             .then(() => {
+                                 goto()
+                             })
                     break;
                     default:
                     return;
                 }
 
-                this.$router.push({
-                    path: path
-                })
+                
             }
         }
     }

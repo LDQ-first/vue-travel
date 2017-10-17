@@ -1,7 +1,7 @@
 <template>
     <div class="routes">
         <ul class="routeslists">
-            <li class="routeslist" v-for="(item, index) in routes" key="index">
+            <li class="routeslist" v-for="(item, index) in routes" key="index" @click="changeRouter('/route', item.pl_id)">
                 <div class="detail">
                     <img :src="item.pic_url" alt="" class="img">
                     <div class="desc">
@@ -42,7 +42,26 @@
 
         },
         methods: {
+            changeRouter(path, plid) {
 
+                 const goto = () => {
+                    this.$router.push({
+                        path: path
+                    })
+                }
+
+                axios.get(route(plid))
+                     .then(res => res.data.data) 
+                     .then(data => {
+                         
+                         localStorage.route = JSON.stringify(data)
+                     })
+                     .then(() => {
+                        goto()
+                    })
+
+                
+            }
         }
 
     }
@@ -64,6 +83,7 @@
                         width: 100px;
                         height: 100px;
                         margin-right: 1em;
+                        border: 4px solid #2983E8;
                     }
                     .desc {
                         flex: 1;
