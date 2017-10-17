@@ -11,12 +11,22 @@
                 </li>
             </ul>
         </header>
+        <article>
+            <div class="traffic">
+                <h2 class="title">交通</h2>
+                <button @click="changeRouter(`/traffic`, sid)">如何到达</button>
+            </div>
+            <div class="routers">
+                <h2 class="title">行程</h2>
+                <button @click="changeRouter(`/routers`, sid)">详细行程</button>
+            </div>
+        </article>
     </div>
 </template>
 
 <script>
     import { mapState } from 'vuex'
-    import { proxy, hotel, view, food, shop} from '../api'
+    import { proxy, hotel, view, food, shop, traffic, routers} from '../api'
     import axios from 'axios'
 
     export default {
@@ -54,7 +64,8 @@
                         axios.get(view(sid))
                              .then(res => res.data.data)
                              .then(data => {
-                                 console.log(data)
+                                 /*console.log(data)*/
+                                 localStorage.view = JSON.stringify(data.scene_list)
                              })
                     break;
                     case '/food': 
@@ -62,6 +73,7 @@
                              .then(res => res.data.data)
                              .then(data => {
                                  console.log(data)
+                                 localStorage.food = JSON.stringify(data.food)
                              })
                     break;
                     case '/shop': 
@@ -69,6 +81,7 @@
                              .then(res => res.data.data)
                              .then(data => {
                                  console.log(data)
+                                 localStorage.shop = JSON.stringify(data.goods)
                              })
                     break;
                     case '/hotel': 
@@ -76,6 +89,23 @@
                              .then(res => res.data.data)
                              .then(data => {
                                  console.log(data)
+                                 localStorage.hotel = JSON.stringify(data.list)
+                             })
+                    break;
+                    case '/traffic': 
+                        axios.get(traffic(sid))
+                             .then(res => res.data.data)
+                             .then(data => {
+                                 console.log(data)
+                                 localStorage.traffic = JSON.stringify(data)
+                             })
+                    break;
+                    case '/routers': 
+                        axios.get(routers(sid))
+                             .then(res => res.data.data)
+                             .then(data => {
+                                 console.log(data)
+                                 localStorage.routers = JSON.stringify(data.plan_list)
                              })
                     break;
                     default:
@@ -93,6 +123,7 @@
 
 <style lang="scss" scoped>
     .detail {
+        margin-bottom: 4em;
         header {
             height: 320px;
             color: #FFF;
@@ -141,5 +172,20 @@
                 }
             }
         }
+        article {
+            .title {
+                text-align: left;
+                margin-bottom: 1em;
+            }
+            .traffic {
+                padding: 1em;
+                border-bottom: 2px solid #3176C6;
+            }
+            .routers {
+                padding: 1em;
+                border-bottom: 2px solid #3176C6;
+            }
+        }
+        
     }
 </style>

@@ -18,6 +18,17 @@ https://lvyou.baidu.com/destination/ajax/getroute?sid=${sid}&route=shopping&form
 export const hotel = (sid) => `${proxy}
 https://lvyou.baidu.com/destination/ajax/webapp/hotel/list?sid=${sid}&rn=10&pn=0`
 
+export const traffic = (sid) => `${proxy}
+https://lvyou.baidu.com/destination/ajax/getroute?sid=${sid}&route=traffic.remote&format=ajax`
+
+export const routers = (sid) => `${proxy}
+https://lvyou.baidu.com/plan/webapp/list?sids=${sid}&rn=15&pn=0&t=1508216901368`
+
+export const route = (plid, n) => `${proxy}
+https://lvyou.baidu.com/plan/webapp/newdetail?pl_id=${plid}&from_day=0&days=${n}`
+
+
+
 
 
 

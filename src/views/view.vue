@@ -11,8 +11,13 @@
         name: 'view',
         data() {
             return {
-
+                view: localStorage.view
             }
+        },
+        created() {
+            this.view = JSON.parse(this.view)
+            console.log(this.view)
+        
         },
         computed: {
 
