@@ -11,11 +11,16 @@
         name: 'shop',
         data() {
             return {
-
+                shop: localStorage.shop
             }
         },
+        created() {
+            this.shop = JSON.parse(this.shop)
+            console.log(this.shop)
+        
+        },
         computed: {
-
+            
         },
         methods: {
 

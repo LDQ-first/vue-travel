@@ -6,15 +6,20 @@
 
 
 <script>
-    import { proxy, router} from '../api'
+    import { proxy, route} from '../api'
     import axios from 'axios'
 
     export default {
         name: 'routes',
         data() {
             return {
-
+                routes: localStorage.routes
             }
+        },
+        created() {
+            this.routes = JSON.parse(this.routes)
+            console.log(this.routes)
+        
         },
         computed: {
 

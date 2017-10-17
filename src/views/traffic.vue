@@ -11,8 +11,13 @@
         name: 'traffic',
         data() {
             return {
-
+                traffic: localStorage.traffic
             }
+        },
+         created() {
+            this.traffic = JSON.parse(this.traffic)
+            console.log(this.traffic)
+        
         },
         computed: {
 

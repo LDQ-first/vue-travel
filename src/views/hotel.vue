@@ -11,8 +11,13 @@
         name: 'hotel',
         data() {
             return {
-
+                hotel: localStorage.hotel
             }
+        },
+        created() {
+            this.hotel = JSON.parse(this.hotel)
+            console.log(this.hotel)
+        
         },
         computed: {
 

@@ -11,8 +11,13 @@
         name: 'food',
         data() {
             return {
-
-            }
+                food: localStorage.food
+            }   
+        },
+        created() {
+            this.food = JSON.parse(this.food)
+            console.log(this.food)
+        
         },
         computed: {
 

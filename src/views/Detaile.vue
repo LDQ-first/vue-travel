@@ -16,9 +16,9 @@
                 <h2 class="title">交通</h2>
                 <button @click="changeRouter(`/traffic`, sid)">如何到达</button>
             </div>
-            <div class="routers">
+            <div class="routes">
                 <h2 class="title">行程</h2>
-                <button @click="changeRouter(`/routers`, sid)">详细行程</button>
+                <button @click="changeRouter(`/routes`, sid)">详细行程</button>
             </div>
         </article>
     </div>
@@ -26,7 +26,7 @@
 
 <script>
     import { mapState } from 'vuex'
-    import { proxy, hotel, view, food, shop, traffic, routers} from '../api'
+    import { proxy, hotel, view, food, shop, traffic, routes} from '../api'
     import axios from 'axios'
 
     export default {
@@ -100,12 +100,12 @@
                                  localStorage.traffic = JSON.stringify(data)
                              })
                     break;
-                    case '/routers': 
-                        axios.get(routers(sid))
+                    case '/routes': 
+                        axios.get(routes(sid))
                              .then(res => res.data.data)
                              .then(data => {
-                                 console.log(data)
-                                 localStorage.routers = JSON.stringify(data.plan_list)
+                                /* console.log(data)*/
+                                 localStorage.routes = JSON.stringify(data.plan_list)
                              })
                     break;
                     default:
@@ -181,7 +181,7 @@
                 padding: 1em;
                 border-bottom: 2px solid #3176C6;
             }
-            .routers {
+            .routes {
                 padding: 1em;
                 border-bottom: 2px solid #3176C6;
             }

@@ -15,12 +15,12 @@
             }
         },
         created() {
-            this.view = JSON.parse(this.view)
+            this.view = JSON.parse(this.view) 
             console.log(this.view)
-        
+            
         },
         computed: {
-
+            
         },
         methods: {
 
