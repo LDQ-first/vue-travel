@@ -7,9 +7,17 @@
             <el-menu-item index="3" v-else @click="showSignIN">登录</el-menu-item>
             <el-menu-item index="4" v-show="user" @click="logout">登出</el-menu-item>
         </el-menu>
-        <search>
-            
-        </search>
+        <search></search>
+        <ul class="searchLists">
+            <li class="searchList" v-for="(item, index) in searchLists" key="index" @click="detail(item.sid)">
+                <img src="../assets/img/searchList.jpg" alt="" class="pic-url">
+                <h3 class="sname">{{item.sname}}</h3>
+            </li>
+        </ul>
+
+
+
+
      <modal :mdShow="isShowSignUP" @close="closeModal('signup')">
         <h3 slot="title">注册</h3>
         <div slot="message">
@@ -55,6 +63,9 @@
     /*import getAVUser from '../lib/getAVUser'*/
     import AV from '../lib/leancloud'
     import Search from '../components/Search.vue'
+    import { mapState } from 'vuex'
+    import { proxy, detail } from '../api'
+    import axios from 'axios'
 
     export default {
         name: 'Home',
@@ -68,6 +79,7 @@
                     username: '',
                     password: ''
                 },
+                proxy: proxy
                  /*signUPArr: [
                     {name: '用户名', value: ''},
                     {name: '密码', value: ''},
@@ -82,12 +94,24 @@
 
         },
         computed: {
-
+            ...mapState({
+                searchLists: state => state.home.search
+            })
         },
         components: {
             Search
         },
         methods: {
+            detail(sid) {
+                axios.get(detail(sid))
+                     .then((res) => res.data.data)
+                     .then(data => {
+                         this.$store.commit('setDetail', data.scene_info)
+                         console.log(data.scene_info)
+                         this.$router.push({path: '/detail'})
+                         localStorage.detail = JSON.stringify(data.scene_info)
+                     })
+            },
             logout() {
                 this.user = ''
                 localStorage.setItem('username', '')
@@ -181,5 +205,21 @@
     }
     .md-content {
         min-width: 320px;
+    }
+    .searchLists {
+
+        .searchList {
+            padding: 1em 0.5em;
+            border-bottom: 2px solid #CCC;
+            display: flex;
+            .pic-url {
+              padding-right: 1em;
+              width: 110px;
+              height: 60px;
+            }
+            .sname {
+                color: #55CDD5;
+            }
+        }
     }
 </style>
