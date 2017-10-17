@@ -19,11 +19,10 @@
 
                         </li>
                     </ul>
-                    <ul class="recCaters">
-                        <li class="recCater" v-for="(rec, j) in item.rec_caters.list" key="j">
+                    <ul class="recCaters" v-if="item.rec_caters">
+                        <li class="recCater" v-for="(rec, j) in item.rec_caters.list" key="j" v-show="">
                             <h4 class="title">{{rec.name}}</h4>
                             <span class="price">{{rec.price}}/ 人</span>
-                            
                         </li>
                     </ul>
                 </li>
